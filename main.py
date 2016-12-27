@@ -28,7 +28,7 @@ def process_submission(submission):
     submission_tokens = title.words
     for token in submission_tokens: # Loop to evaluate sentiment and return Buy/Sell/None
         if token in tickerdict.keys():
-            print ("Found Ticker: " + token + "| " + tickerdict[token])
+            print ("Found Ticker: " + token + " | " + tickerdict[token])
             if "short" in title_lower:
                 return "Sell"
             elif "long" in title_lower:
@@ -50,7 +50,7 @@ def process_comment(comment):
     comment_tokens = comment.words
     for token in comment_tokens: # Loop to evaluate sentiment and return Buy/Sell/None
         if token in tickerdict.keys():
-            print ("Found Ticker: " + token + "| " + tickerdict[token])
+            print ("Found Ticker: " + token + " | " + tickerdict[token])
             if "short" in comment_lower:
                 return "Sell"
             elif "long" in comment_lower:
