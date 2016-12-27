@@ -16,10 +16,10 @@ def main():
     )
     subreddit = reddit.subreddit('wallstreetbets') # defining subreddit as /r/wallstreetbets
     for submission in subreddit.stream.submissions(): # creating subreddit stream for posts
-        print (submission.title)
+        #print (submission.title)
         process_submission(submission)
     for comment in subreddit.stream.comments(): # creating subreddit stream for comments
-        print (comment.body)
+        #print (comment.body)
         process_comment(comment)
 
 def process_submission(submission):
