@@ -5,6 +5,8 @@ import matplotlib #Adding plotting in future
 from textblob import *
 from tickerdict import tickerdict
 
+ticker_frequency = {}
+
 def main():
     # Authentication and creating reddit instance
     reddit = praw.Reddit(
@@ -29,6 +31,9 @@ def process_submission(submission):
     for token in submission_tokens: # Loop to evaluate sentiment and return Buy/Sell/None
         if token in tickerdict.keys():
             print ("Found Ticker: " + token + "| " + tickerdict[token])
+            count = ticker_frequency.get(token, 0)
+            ticker_frequency[token] = count + 1
+
             if "short" in title_lower:
                 return "Sell"
             elif "long" in title_lower:
@@ -51,6 +56,8 @@ def process_comment(comment):
     for token in comment_tokens: # Loop to evaluate sentiment and return Buy/Sell/None
         if token in tickerdict.keys():
             print ("Found Ticker: " + token + "| " + tickerdict[token])
+            count = ticker_frequency.get(token, 0)
+            ticker_frequency[token] = count + 1
             if "short" in comment_lower:
                 return "Sell"
             elif "long" in comment_lower:
