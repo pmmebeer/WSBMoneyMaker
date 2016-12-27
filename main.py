@@ -30,17 +30,17 @@ def process_submission(submission):
         if token in tickerdict.keys():
             print ("Found Ticker: " + token + " | " + tickerdict[token])
             if "short" in title_lower:
-                return "Sell"
+                print ("Sell")
             elif "long" in title_lower:
-                return "Buy"
+                print ("Buy")
             else:
                 title_sentiment = title.sentiment # Returns NamedTuple in format (Sentiment(polarity = x, subjectivity = y)
                 if title_sentiment.polarity > 0 and title_sentiment.subjectivity > 0.3:
-                    return "Buy"
+                    print ("Buy")
                 elif title_sentiment.polarity < 0 and title_sentiment.subjectivity > 0.3:
-                    return "Sell"
+                    print("Sell")
                 else:
-                    return "Sentiment Uncertain"
+                    print("Sentiment Uncertain")
         else:
             return "No Ticker Found"
 
@@ -52,17 +52,17 @@ def process_comment(comment):
         if token in tickerdict.keys():
             print ("Found Ticker: " + token + " | " + tickerdict[token])
             if "short" in comment_lower:
-                return "Sell"
+                print("Sell")
             elif "long" in comment_lower:
-                return "Buy"
+                print("Buy")
             else:
                 comment_sentiment = comment.sentiment # Returns NamedTuple in format (Sentiment(polarity = x, subjectivity = y)
                 if comment_sentiment.polarity > 0 and comment_sentiment.subjectivity > 0.3:
-                    return "Buy"
+                    print("Buy")
                 elif comment_sentiment.polarity < 0 and comment_sentiment.subjectivity > 0.3:
-                    return "Sell"
+                    print("Sell")
                 else:
-                    return "Sentiment Uncertain"
+                    print("Sentiment Uncertain")
         else:
             return "No Ticker Found"
 
